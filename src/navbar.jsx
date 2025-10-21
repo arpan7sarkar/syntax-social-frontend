@@ -8,7 +8,7 @@ const NavBar = () => {
           <a className="btn btn-ghost text-xl">
             SyntaxSocial
             <span>
-              <i class="ri-code-s-line"></i>
+              <i className="ri-code-s-line"></i>
             </span>
           </a>
         </div>
