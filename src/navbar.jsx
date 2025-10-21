@@ -1,9 +1,9 @@
 import React from "react";
 
-const navbar = () => {
+const NavBar = () => {
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar bg-base-300">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">
             SyntaxSocial
@@ -49,4 +49,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default NavBar;

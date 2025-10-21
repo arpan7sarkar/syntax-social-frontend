@@ -1,9 +1,9 @@
-import navbar from "./navbar.jsx"
+import NavBar from "./NavBar.jsx"
 
 function App() {
   return (
     <>
-    {navbar()}
+    <NavBar/>
     <h1  class="text-3xl font-bold underline">Hello World</h1>   
     </>
   )
