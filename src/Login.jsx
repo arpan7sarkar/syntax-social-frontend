@@ -2,8 +2,8 @@ import React from "react";
 
 const Login = () => {
   return (
-    <div className="flex justify-center items-center mt-20 h-[90%]">
-      <div className="card bg-base-300 w-130 shadow-sm p-10 h-1/2">
+    <div className="flex justify-center items-center mt-25 h-[90%]">
+      <div className="card bg-base-300 lg:w-[25%] h-[vmax] shadow-sm p-10 ">
         <div className="card-body items-center text-center p-10 gap-6">
           <h2 className="text-2xl font-bold">Login</h2>
             <label className="input validator">
