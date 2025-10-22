@@ -1,12 +1,12 @@
 import { Outlet } from "react-router";
 import NavBar from "./NavBar";
-import Footer from "./Footer";
+import Footer from "./components/Footer";
 
 const Body = () => {
   return (
     <div>
       <NavBar />
-      <Outlet /> {/* Any children route will render here in the outlet */}
+      <Outlet /> 
       <Footer/>
     </div>
   );
