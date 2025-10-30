@@ -1,15 +1,18 @@
-import  { useState } from "react";
+import  { use, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { useNavigate } from "react-router";
+import { BASE_URL } from "../utils/constant";
 const Login = () => {
   const [emailId, setEmail] = useState("arpan@gmaill.com");
   const [password, setPassword] = useState("Arpan@123");
   const dispatch = useDispatch();
+  const navigate=useNavigate();
   const loginHadnler = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:7777/login",
+        BASE_URL + "/login",
         {
           emailId,
           password,
@@ -17,6 +20,7 @@ const Login = () => {
         { withCredentials: true }
       );
       dispatch(addUser(res.data.user));//this willl save the user data into redux toolkit
+      navigate("/");//after logining it should navigate to home
     } catch (error) {
       console.log(error.message);
     }

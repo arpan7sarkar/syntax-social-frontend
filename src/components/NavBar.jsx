@@ -4,7 +4,9 @@ import { useSelector } from "react-redux";
 const NavBar = () => {
   const user = useSelector((store) => store.user);
   console.log(user);
-  const profilePic = user?.photoUrl || "https://i.pinimg.com/736x/f1/01/e0/f101e02ae91f92e9e8c70baa78beda12.jpg";
+  const profilePic =
+    user?.photoUrl ||
+    "https://i.pinimg.com/736x/f1/01/e0/f101e02ae91f92e9e8c70baa78beda12.jpg";
 
   return (
     <div>
@@ -20,6 +22,10 @@ const NavBar = () => {
         {/* {user &&  this part means if user is present then only show the dp else don't show */}
         {user && (
           <div className="flex gap-2">
+            <div className="text-xl font-semibold flex items-center">
+              {/* name of the user */}
+              <div>Welcome , {user.fName}</div>
+            </div>
             <div className="dropdown dropdown-end mx-5">
               <div
                 tabIndex={0}
