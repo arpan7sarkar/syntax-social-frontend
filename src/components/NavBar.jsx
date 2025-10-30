@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const user = useSelector((store) => store.user);
-  console.log(user);
   const profilePic =
     user?.photoUrl ||
     "https://i.pinimg.com/736x/f1/01/e0/f101e02ae91f92e9e8c70baa78beda12.jpg";
