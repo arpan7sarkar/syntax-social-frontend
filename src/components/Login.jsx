@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import axios from "axios";
-
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 const Login = () => {
   const [emailId, setEmail] = useState("arpan@gmaill.com");
   const [password, setPassword] = useState("Arpan@123");
+  const dispatch = useDispatch();
   const loginHadnler = async () => {
     try {
-      const res = await axios.post("http://localhost:7777/login", {
-        emailId,
-        password,
-      },{withCredentials:true});
+      const res = await axios.post(
+        "http://localhost:7777/login",
+        {
+          emailId,
+          password,
+        },
+        { withCredentials: true }
+      );
+      dispatch(addUser(res.data.user));//this willl save the user data into redux toolkit
     } catch (error) {
       console.log(error.message);
     }
@@ -84,7 +91,12 @@ const Login = () => {
             </label>
           </div>
           <div className="card-actions justify-center p-4">
-            <button className="btn btn-primary active:scale-95" onClick={loginHadnler}>Login</button>
+            <button
+              className="btn btn-primary active:scale-95"
+              onClick={loginHadnler}
+            >
+              Login
+            </button>
           </div>
         </div>
       </div>
@@ -93,3 +105,4 @@ const Login = () => {
 };
 
 export default Login;
+
