@@ -1,14 +1,26 @@
 import React, { useState } from "react";
+import axios from "axios";
+
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("")
+  const [emailId, setEmail] = useState("arpan@gmaill.com");
+  const [password, setPassword] = useState("Arpan@123");
+  const loginHadnler = async () => {
+    try {
+      const res = await axios.post("http://localhost:7777/login", {
+        emailId,
+        password,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <div className="flex justify-center items-center mt-35 ">
       <div className="card bg-base-200 rounded-2xl overflow-hidden w-96 shadow-sm  ">
         <div className="card-body ">
           <h2 className="card-title ml-28 text-3xl p-2 font-semibold">Login</h2>
           <div className="flex flex-col justify-center items-center gap-2">
-            {/* email */}
+            {/* emailId */}
             <label className="input validator">
               <svg
                 className="h-[1em] opacity-50"
@@ -26,9 +38,15 @@ const Login = () => {
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </g>
               </svg>
-              <input type="email" placeholder="Enter your email " required value={email} onChange={(e)=>{
-                  setEmail(e.target.value)
-              }}  />
+              <input
+                type="emailId"
+                placeholder="Enter your emailId "
+                required
+                value={emailId}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
             </label>
             {/* password */}
             <label className="input validator">
@@ -58,15 +76,15 @@ const Login = () => {
                 required
                 placeholder="Password"
                 value={password}
-                onChange={(e)=>{
-                  setPassword(e.target.value)
+                onChange={(e) => {
+                  setPassword(e.target.value);
                 }}
                 title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
               />
             </label>
           </div>
           <div className="card-actions justify-center p-4">
-            <button className="btn btn-primary active:scale-95">Login</button>
+            <button className="btn btn-primary active:scale-95" onClick={loginHadnler}>Login</button>
           </div>
         </div>
       </div>
