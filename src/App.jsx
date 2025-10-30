@@ -1,8 +1,8 @@
-import Login from "./Login.jsx";
+import Login from "./components/Login.jsx";
 import { BrowserRouter, Routes, Route } from "react-router";
-import Home from "./Home.jsx";
-import Body from "./Body.jsx";
-import Profile from "./Profile.jsx";
+import Home from "./components/Home.jsx";
+import Body from "./components/Body.jsx";
+import Profile from "./components//Profile.jsx";
 function App() {
   return (
     <>
