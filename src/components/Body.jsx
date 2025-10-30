@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import axios from "axios";
@@ -9,6 +9,7 @@ import { useEffect } from "react";
 
 const Body = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   //this function will call profile viewing api when the website will be loaded
   const fetchUser = async () => {
     try {
@@ -17,13 +18,13 @@ const Body = () => {
       });
       dispatch(addUser(res.data.user));
     } catch (error) {
+      navigate("/login");
       console.log(error);
-      
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     fetchUser();
-  },[ ]);
+  }, []);
   return (
     <div>
       <NavBar />
