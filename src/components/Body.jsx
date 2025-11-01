@@ -5,13 +5,16 @@ import axios from "axios";
 import { BASE_URL } from "../utils/constant";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { useEffect } from "react";
+import { use, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userData=useSelector(state=>state.user);
   //this function will call profile viewing api when the website will be loaded
   const fetchUser = async () => {
+    if(userData) return;
     try {
       const res = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
