@@ -16,16 +16,18 @@ const Body = () => {
       const res = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
       });
-      dispatch(addUser(res.data.data));
-     console.log(res.data.data)
+      dispatch(addUser(res.data));
+      console.log(res.data);
     } catch (error) {
-      navigate("/login");
+      //only when user is unothorized(not loggedin)
+      if(error.status===401){
+        navigate("/login");
+      }
       console.log(error);
     }
   };
   useEffect(() => {
     fetchUser();
-
   }, []);
   return (
     <div>
