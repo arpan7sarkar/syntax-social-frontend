@@ -19,7 +19,7 @@ const Body = () => {
         withCredentials: true,
       });
       dispatch(addUser(res.data.user));
-      console.log(res.data.user);
+      // console.log(res.data.user);
     } catch (error) {
       //only when user is unothorized(not loggedin)
       if(error.status===401){
