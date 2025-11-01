@@ -1,4 +1,4 @@
-import  { use, useState } from "react";
+import { use, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
@@ -8,7 +8,8 @@ const Login = () => {
   const [emailId, setEmail] = useState("arpan@gmaill.com");
   const [password, setPassword] = useState("Arpan@123");
   const dispatch = useDispatch();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+  const [loginError, setLoginError] = useState("");
   const loginHadnler = async () => {
     try {
       const res = await axios.post(
@@ -19,10 +20,11 @@ const Login = () => {
         },
         { withCredentials: true }
       );
-      dispatch(addUser(res.data));//this willl save the user data into redux toolkit
-      navigate("/");//after logining it should navigate to home
+      dispatch(addUser(res.data)); //this willl save the user data into redux toolkit
+      navigate("/"); //after logining it should navigate to home
     } catch (error) {
-      console.log(error.message);
+      console.log(error?.response?.data);
+      setLoginError(error?.response?.data)
     }
   };
   return (
@@ -94,6 +96,7 @@ const Login = () => {
               />
             </label>
           </div>
+          <p className="text-red-500">{loginError}</p>
           <div className="card-actions justify-center p-4">
             <button
               className="btn btn-primary active:scale-95"
@@ -109,4 +112,3 @@ const Login = () => {
 };
 
 export default Login;
-
