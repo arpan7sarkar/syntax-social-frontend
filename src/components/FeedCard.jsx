@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-const FeedCard = (props) => {
+const FeedCard = ({user}) => {
+  console.log(user);
+  
   const [profilePic, setProfilePic] = useState(
-    "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.3xEyL-e1iF_e3pCb_OFCpgHaHa%3Fpid%3DApi&sp=1762100980T55e5b411e798a93d3ba259644b53acb424cf3fa72e1346f24f7fc90fe7f5ea6d"
+    "https://imgs.search.brave.com/MOJNZZ7jZEobQ9JitvnpUAhqvxpu5zwiYbbnQxtiNQg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzlmLzRj/L2YwLzlmNGNmMGYy/NGIzNzYwNzdhMmZj/ZGFiMmU4NWMzNTg0/LmpwZw"
   );
   const [fname, setFname] = useState("Jhon");
   const [lname, setLname] = useState("Doe");
@@ -10,7 +12,7 @@ const FeedCard = (props) => {
   const [userabout, setUserabout] = useState(
     " Hey there I am using Syntax social"
   );
-  const { fName, lName, age, about } = props;
+  const { fName, lName, age, about } = user;
   const getUserDetails = () => {
     try {
       setFname(fName);
@@ -21,9 +23,10 @@ const FeedCard = (props) => {
       console.log(error);
     }
   };
-  useEffect(() => {
+  useEffect( () => {
     getUserDetails();
-  }, []);
+  
+  }, [user]);
   return (
     <div className="flex justify-center items-center ">
       <div className="card mt-5 w-96 shadow-sm bg-base-300">
