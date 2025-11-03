@@ -4,16 +4,24 @@ const EditProfile = () => {
   const [lName, setLName] = useState("");
   const [age, setAge] = useState(18);
   return (
-    <div className="h-screen w-full flex justify-center mt-30">
-      <div className="h-2/3 w-1/2 ">
+    <div className="h-screen w-full flex justify-center mt-30 r">
+      <div className="h-3/4 w-1/3 rounded-2xl overflow-hidden ">
         {/* Profile section */}
         <div className="bg-base-200 h-full w-full  p-2">
           <div className="text-4xl flex justify-center items-center  p-2 font-semibold">
-            Profile
+            PROFILE
           </div>
-
-          {/* Profile Pic */}
-
+          {/* Profile Pic Link */}
+          <div >
+            <legend className="fieldset-legend text-xl p-2">Profile Pic Link</legend>
+            <input
+              type="text"
+              className="input w-full p-4"
+              placeholder="Profile Pic Link"
+              //   value={profilePic}
+              //   onChange={(e) => setProfilePic(e.target.value)}
+            />
+          </div>
           {/* Name */}
           <div className="flex flex-col gap-5">
             <fieldset className="fieldset">
@@ -72,6 +80,7 @@ const EditProfile = () => {
               placeholder="Write something about yourself"
             ></textarea>
           </fieldset>
+
           {/* Submit buttn */}
           <div className="flex justify-center mt-4">
             <button className="btn bg-primary">Update</button>
