@@ -24,12 +24,11 @@ const Feed = () => {
   }, []);
   return (
     feed && (
-      <div className="flex flex-wrap justify-center">
-        {
-          feed.map((user) => {
-            return <FeedCard user={user} />;
-          })
-        }
+      <div className="flex flex-wrap justify-center overflow-hidden">
+        {feed.map((user,idx) => {
+          return <FeedCard key={idx} user={user} />;
+        })
+      }
       </div>
     )
   );
