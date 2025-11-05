@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const FeedCard = ({ user }) => {
+const UserCard = ({ user }) => {
   // console.log(user);
 
   const [profilePic, setProfilePic] = useState(
@@ -9,6 +9,7 @@ const FeedCard = ({ user }) => {
   const [fname, setFname] = useState("Jhon");
   const [lname, setLname] = useState("Doe");
   const [currentAge, setCurrentAge] = useState("18");
+  const [gender, setGender] = useState(user.gender);
   const [userabout, setUserabout] = useState(
     " Hey there I am using Syntax social"
   );
@@ -30,8 +31,8 @@ const FeedCard = ({ user }) => {
     getUserDetails();
   }, [user]);
   return (
-    <div className="flex justify-center items-center  border-1">
-      <div className="card mt-5 w-96 shadow-sm bg-base-300">
+    <div>
+      <div className="card mt-5 w-100 shadow-sm bg-base-300 mx-0">
         <figure className="px-10 pt-10">
           <img src={profilePic} alt="photo" className="rounded-xl border-1 h-70 w-55" />
         </figure>
@@ -40,11 +41,11 @@ const FeedCard = ({ user }) => {
             {fname} {lname}
           </h2>
           <div>
-            <p>Age: {currentAge}</p>
+            <p>
+              Age: {currentAge}
+              {gender && <span>Gender: {gender}</span>}
+            </p>
             <p>{userabout}</p>
-          </div>
-          <div className="card-actions p-2">
-            <button className="btn btn-accent">Add connection</button>
           </div>
         </div>
       </div>
@@ -52,4 +53,4 @@ const FeedCard = ({ user }) => {
   );
 };
 
-export default FeedCard;
+export default UserCard;
