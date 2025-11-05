@@ -4,7 +4,7 @@ import EditProfile from "../components/EditProfile";
 const Profile = () => {
   const user=useSelector((state)=>state.user);
   return (
-    <div>
+    user && <div>
         <EditProfile user={user}/>
     </div>
   );

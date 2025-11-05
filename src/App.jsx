@@ -2,7 +2,7 @@ import Login from "./components/Login.jsx";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./components/Home.jsx";
 import Body from "./components/Body.jsx";
-import Profile from "./page//Profile.jsx";
+import Profile from "./page/Profile.jsx";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Feed from "./Page/Feed.jsx";

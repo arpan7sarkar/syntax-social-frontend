@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
-const EditProfile = ({ user }) => {
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+const EditProfile = ({user}) => {
   const { fName, lName, age, about, photoUrl,gender } = user;
+  const dispatch=useDispatch();
   const [Fname, setFName] = useState("");
   const [Lname, setLName] = useState("");
   const [Age, setAge] = useState(18);
@@ -8,6 +11,7 @@ const EditProfile = ({ user }) => {
   const [Gender, setGender] = useState("");
   const [About, setAbout] = useState("Hey there I am using Syntax social");
   const getUserDetails =()=>{
+    dispatch(addUser(user))
     setFName(fName);
     setLName(lName);
     setAge(age);
@@ -17,10 +21,10 @@ const EditProfile = ({ user }) => {
   }
   useEffect(()=>{
     getUserDetails();
-  },[user])
+  },[])
   return (
-    user ? <div className="h-screen w-full flex justify-center mt-30 r">
-      <div className="h-3/4 w-1/3 rounded-2xl overflow-hidden ">
+    user && <div className="h-screen w-full flex justify-center mt-30 r">
+      <div className="h-6/7 w-1/3 rounded-2xl overflow-hidden ">
         {/* Profile section */}
         <div className="bg-base-200 h-full w-full  p-2">
           <div className="text-4xl flex justify-center items-center  p-2 font-semibold">
@@ -35,8 +39,8 @@ const EditProfile = ({ user }) => {
               type="text"
               className="input w-full p-4"
               placeholder="Profile Pic Link"
-              //   value={profilePic}
-              //   onChange={(e) => setProfilePic(e.target.value)}
+                value={profilePic}
+                onChange={(e) => setProfilePic(e.target.value)}
             />
           </div>
           {/* Name */}
