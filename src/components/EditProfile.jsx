@@ -14,7 +14,7 @@ const EditProfile = ({ user }) => {
   const [about, setAbout] = useState(
     user?.about || "Hey there I am using Syntax social"
   );
-
+  const [mainError, setMainError] = useState("")
   const getUserDetails = () => {
     if (user) {
       dispatch(addUser(user));
@@ -34,8 +34,10 @@ const EditProfile = ({ user }) => {
         { withCredentials: true }
       );
       console.log("Update successful ✅");
+      setMainError("")
     } catch (error) {
       console.error("Error updating profile ❌:", error);
+      setMainError(error.response.data)
     }
   };
 
@@ -128,7 +130,9 @@ const EditProfile = ({ user }) => {
               onChange={(e) => setAbout(e.target.value)}
             ></textarea>
           </fieldset>
-
+          <div className="text-red-400">
+                {mainError}
+          </div>
           {/* Submit button */}
           <div className="flex justify-center mt-6">
             <button className="btn bg-primary text-white" onClick={handleUpdate}>

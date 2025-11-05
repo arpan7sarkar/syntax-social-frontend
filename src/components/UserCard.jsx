@@ -42,8 +42,8 @@ const UserCard = ({ user }) => {
           </h2>
           <div>
             <p>
-              Age: {currentAge}
-              {gender && <span>Gender: {gender}</span>}
+              Age: {currentAge +"     "}
+              {gender &&  <span>Gender: {gender}</span>}
             </p>
             <p>{userabout}</p>
           </div>
