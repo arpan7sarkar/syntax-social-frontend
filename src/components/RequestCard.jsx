@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const RequestCard = ({ user }) => {
   // console.log(user);
-  const request= useSelector((state) => {return state.request})
+  const connectionStatus= useSelector((state) => {return state.connectionStatus})
 
   const [profilePic, setProfilePic] = useState(
     "https://imgs.search.brave.com/MOJNZZ7jZEobQ9JitvnpUAhqvxpu5zwiYbbnQxtiNQg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzlmLzRj/L2YwLzlmNGNmMGYy/NGIzNzYwNzdhMmZj/ZGFiMmU4NWMzNTg0/LmpwZw"
@@ -33,7 +33,15 @@ const RequestCard = ({ user }) => {
 
   const acceptRequest=async ()=>{
     try {
-      const req= await axios.post(BASE_URL+`/request/review/accepted/${request._id}`,)
+      const res = await axios.post(BASE_URL + `/request/review/accepted/${connectionStatus._id}`, {}, { withCredentials: true });
+      console.log(req);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const rejectRequest=async ()=>{
+    try {
+      const req= await axios.post(BASE_URL+`/request/review/rejected/${connectionStatus._id}`,)
       console.log(req);
     } catch (error) {
       console.log(error)
@@ -45,7 +53,7 @@ const RequestCard = ({ user }) => {
   }, [user]);
   return (
     <div className="flex justify-center items-center  border-1">
-      {request && <div className="card mt-5 w-96 shadow-sm bg-base-300">
+      {connectionStatus && <div className="card mt-5 w-96 shadow-sm bg-base-300">
         <figure className="px-10 pt-10">
           <img
             src={profilePic}
