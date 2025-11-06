@@ -14,10 +14,16 @@ const EditProfile = ({ user }) => {
   const [about, setAbout] = useState(
     user?.about || "Hey there I am using Syntax social"
   );
-  const [mainError, setMainError] = useState("")
+  const [ mainError, setMainError] = useState("");
+  const [toast, setToast] = useState("");
+  const [showToast, setShowToast] = useState(false);
   const getUserDetails = () => {
     if (user) {
       dispatch(addUser(user));
+      setShowToast(true)
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
     }
   };
 
@@ -33,11 +39,14 @@ const EditProfile = ({ user }) => {
         { fName, lName, age, about, photoUrl, gender },
         { withCredentials: true }
       );
-      console.log("Update successful ✅");
-      setMainError("")
+      setToast("User update succesfully");
     } catch (error) {
       console.error("Error updating profile ❌:", error);
-      setMainError(error.response.data)
+      setMainError(error.response.data);
+      setShowToast(true)
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
     }
   };
 
@@ -130,12 +139,12 @@ const EditProfile = ({ user }) => {
               onChange={(e) => setAbout(e.target.value)}
             ></textarea>
           </fieldset>
-          <div className="text-red-400">
-                {mainError}
-          </div>
           {/* Submit button */}
           <div className="flex justify-center mt-6">
-            <button className="btn bg-primary text-white" onClick={handleUpdate}>
+            <button
+              className="btn bg-primary text-white"
+              onClick={handleUpdate}
+            >
               Update
             </button>
           </div>
@@ -144,6 +153,18 @@ const EditProfile = ({ user }) => {
 
       {/* Preview card */}
       <UserCard user={{ fName, lName, age, gender, about, photoUrl }} />
+
+      {showToast && (
+         <div className="toast toast-top toast-center">
+         { mainError && <div className="alert alert-info bg-red-400 ">
+            <span>{mainError}</span>
+          </div>}
+
+          {toast && <div className="alert alert-success">
+            <span>{toast}</span>
+          </div>}
+        </div>
+      )}
     </div>
   );
 };
