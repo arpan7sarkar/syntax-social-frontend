@@ -20,10 +20,7 @@ const EditProfile = ({ user }) => {
   const getUserDetails = () => {
     if (user) {
       dispatch(addUser(user));
-      setShowToast(true)
-      setTimeout(() => {
-        setShowToast(false);
-      }, 3000);
+     
     }
   };
 
@@ -40,6 +37,10 @@ const EditProfile = ({ user }) => {
         { withCredentials: true }
       );
       setToast("User update succesfully");
+       setShowToast(true)
+      setTimeout(() => {
+        setShowToast(false);
+      }, 1000);
     } catch (error) {
       console.error("Error updating profile ❌:", error);
       setMainError(error.response.data);

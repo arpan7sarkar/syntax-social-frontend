@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const FeedCard = ({ user }) => {
-  // console.log(user);
+  console.log(user);
 
   const [profilePic, setProfilePic] = useState(
     "https://imgs.search.brave.com/MOJNZZ7jZEobQ9JitvnpUAhqvxpu5zwiYbbnQxtiNQg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzlmLzRj/L2YwLzlmNGNmMGYy/NGIzNzYwNzdhMmZj/ZGFiMmU4NWMzNTg0/LmpwZw"
