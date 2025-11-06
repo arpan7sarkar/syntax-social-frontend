@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const FeedCard = ({ user }) => {
+const ConnctionsCard = ({ user }) => {
   // console.log(user);
 
   const [profilePic, setProfilePic] = useState(
@@ -44,12 +44,12 @@ const FeedCard = ({ user }) => {
             <p>{userabout}</p>
           </div>
           <div className="card-actions p-2">
-            <button className="btn btn-accent">Add connection</button>
           </div>
+            <button className="btn btn-warning">Remove Conection</button>
         </div>
       </div>
     </div>
   );
 };
 
-export default FeedCard;
+export default ConnctionsCard;
