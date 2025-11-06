@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { BASE_URL } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequest } from "../utils/requestSlice";
-import ConnctionsCard from "../components/ConnectionsCard";
 import RequestCard from "../components/RequestCard";
 
 const Requests = () => {
@@ -25,11 +24,12 @@ const Requests = () => {
   }, []);
   return (
     <div>
-      <div>
-       { request.map((reqs,idx) => {
-            return <RequestCard user={reqs} key={idx} />}
-        )}
-      </div>
+      {request &&<div>
+        {request.map((user, idx) => {
+          
+          return <RequestCard user={user} key={idx} />;
+        })}
+      </div>}
       ;
     </div>
   );

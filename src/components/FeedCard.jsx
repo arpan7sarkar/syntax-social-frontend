@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../utils/constant";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 const FeedCard = ({key, user }) => {
   // console.log("hi"+uid);
-
+  const dispatch=useDispatch();
   const [profilePic, setProfilePic] = useState(
     "https://imgs.search.brave.com/MOJNZZ7jZEobQ9JitvnpUAhqvxpu5zwiYbbnQxtiNQg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzlmLzRj/L2YwLzlmNGNmMGYy/NGIzNzYwNzdhMmZj/ZGFiMmU4NWMzNTg0/LmpwZw"
   );
@@ -13,7 +14,7 @@ const FeedCard = ({key, user }) => {
   const [currentAge, setCurrentAge] = useState("18");
   const [userabout, setUserabout] = useState(
     " Hey there I am using Syntax social"
-  ); 
+  );
   const { fName, lName, age, about, photoUrl } = user;
   const getUserDetails = () => {
     try {
@@ -32,6 +33,7 @@ const FeedCard = ({key, user }) => {
     try {
       const req= await axios.post(BASE_URL+`/request/send/interested/${user._id}`)
       console.log(req);
+
     } catch (error) {
       console.log(error);
     }

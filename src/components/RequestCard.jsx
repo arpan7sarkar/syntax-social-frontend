@@ -1,7 +1,11 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { BASE_URL } from "../utils/constant";
+import { useSelector } from "react-redux";
 
 const RequestCard = ({ user }) => {
   // console.log(user);
+  const request= useSelector((state) => {return state.request})
 
   const [profilePic, setProfilePic] = useState(
     "https://imgs.search.brave.com/MOJNZZ7jZEobQ9JitvnpUAhqvxpu5zwiYbbnQxtiNQg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzlmLzRj/L2YwLzlmNGNmMGYy/NGIzNzYwNzdhMmZj/ZGFiMmU4NWMzNTg0/LmpwZw"
@@ -26,12 +30,22 @@ const RequestCard = ({ user }) => {
       console.log(error);
     }
   };
+
+  const acceptRequest=async ()=>{
+    try {
+      const req= await axios.post(BASE_URL+`/request/review/accepted/${request._id}`,)
+      console.log(req);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     getUserDetails();
   }, [user]);
   return (
     <div className="flex justify-center items-center  border-1">
-      <div className="card mt-5 w-96 shadow-sm bg-base-300">
+      {request && <div className="card mt-5 w-96 shadow-sm bg-base-300">
         <figure className="px-10 pt-10">
           <img
             src={profilePic}
@@ -48,11 +62,11 @@ const RequestCard = ({ user }) => {
             <p>{userabout}</p>
           </div>
           <div className="card-actions p-2 flex gap-10">
-            <button className="btn btn-primary">Accept</button>
+            <button className="btn btn-primary" onClick={acceptRequest}>Accept</button>
             <button className="btn btn-warning">Reject</button>
           </div>
         </div>
-      </div>
+      </div>}
     </div>
   );
 };
