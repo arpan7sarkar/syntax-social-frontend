@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../utils/constant";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { addConnectionStatus } from "../utils/connectionStatusSlice";
+import { removeFeed } from "../utils/feedSlice";
 
-const FeedCard = ({key, user }) => {
+const FeedCard = ({ key, user }) => {
   // console.log("hi"+uid);
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const [profilePic, setProfilePic] = useState(
     "https://imgs.search.brave.com/MOJNZZ7jZEobQ9JitvnpUAhqvxpu5zwiYbbnQxtiNQg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzlmLzRj/L2YwLzlmNGNmMGYy/NGIzNzYwNzdhMmZj/ZGFiMmU4NWMzNTg0/LmpwZw"
   );
@@ -29,23 +31,29 @@ const FeedCard = ({key, user }) => {
       console.log(error);
     }
   };
-  const sendConnection=async () => {
+  const sendConnection = async () => {
     try {
-      const req= await axios.post(BASE_URL+`/request/send/interested/${user._id}`)
+      const req = await axios.post(
+        BASE_URL + `/request/send/interested/${user._id}`
+      );
       console.log(req);
-
+      dispatch(addConnectionStatus(req.data.data));
+      dispatch(removeFeed(user._id))
     } catch (error) {
       console.log(error);
     }
-  }
-  const ignoreConnection =async () => {
+  };
+  const ignoreConnection = async () => {
     try {
-      const req= await axios.post(BASE_URL+`/request/send/ignored/${user._id}`)
+      const req = await axios.post(
+        BASE_URL + `/request/send/ignored/${user._id}`
+      );
       console.log(req);
+      dispatch(addConnectionStatus(req.data.data));
     } catch (error) {
       console.log(error);
     }
-  }
+  };
   useEffect(() => {
     getUserDetails();
   }, [user]);
@@ -68,8 +76,12 @@ const FeedCard = ({key, user }) => {
             <p>{userabout}</p>
           </div>
           <div className="card-actions p-2">
-            <button className="btn btn-success " onClick={sendConnection}>Interested</button>
-            <button className="btn btn-error" onClick={ignoreConnection}>Ignored</button>
+            <button className="btn btn-success " onClick={sendConnection}>
+              Interested
+            </button>
+            <button className="btn btn-error" onClick={ignoreConnection}>
+              Ignored
+            </button>
           </div>
         </div>
       </div>
