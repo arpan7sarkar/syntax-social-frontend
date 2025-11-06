@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { BASE_URL } from "../utils/constant";
+import axios from "axios";
 
-const FeedCard = ({ user }) => {
-  // console.log(user);
+const FeedCard = ({key, user }) => {
+  // console.log("hi"+uid);
 
   const [profilePic, setProfilePic] = useState(
     "https://imgs.search.brave.com/MOJNZZ7jZEobQ9JitvnpUAhqvxpu5zwiYbbnQxtiNQg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzlmLzRj/L2YwLzlmNGNmMGYy/NGIzNzYwNzdhMmZj/ZGFiMmU4NWMzNTg0/LmpwZw"
@@ -11,7 +13,7 @@ const FeedCard = ({ user }) => {
   const [currentAge, setCurrentAge] = useState("18");
   const [userabout, setUserabout] = useState(
     " Hey there I am using Syntax social"
-  );
+  ); 
   const { fName, lName, age, about, photoUrl } = user;
   const getUserDetails = () => {
     try {
@@ -19,13 +21,29 @@ const FeedCard = ({ user }) => {
       setLname(lName);
       setCurrentAge(age);
       setUserabout(about);
-      if(photoUrl){
+      if (photoUrl) {
         setProfilePic(photoUrl);
       }
     } catch (error) {
       console.log(error);
     }
   };
+  const sendConnection=async () => {
+    try {
+      const req= await axios.post(BASE_URL+`/request/send/interested/${user._id}`)
+      console.log(req);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const ignoreConnection =async () => {
+    try {
+      const req= await axios.post(BASE_URL+`/request/send/ignored/${user._id}`)
+      console.log(req);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   useEffect(() => {
     getUserDetails();
   }, [user]);
@@ -33,7 +51,11 @@ const FeedCard = ({ user }) => {
     <div className="flex justify-center items-center  border-1">
       <div className="card mt-5 w-96 shadow-sm bg-base-300">
         <figure className="px-10 pt-10">
-          <img src={profilePic} alt="photo" className="rounded-xl border-1 h-70 w-55" />
+          <img
+            src={profilePic}
+            alt="photo"
+            className="rounded-xl border-1 h-70 w-55"
+          />
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title text-3xl">
@@ -44,7 +66,8 @@ const FeedCard = ({ user }) => {
             <p>{userabout}</p>
           </div>
           <div className="card-actions p-2">
-            <button className="btn btn-accent">Add connection</button>
+            <button className="btn btn-success " onClick={sendConnection}>Interested</button>
+            <button className="btn btn-error" onClick={ignoreConnection}>Ignored</button>
           </div>
         </div>
       </div>
