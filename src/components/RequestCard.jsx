@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 const RequestCard = ({ user }) => {
   // console.log(user);
   const connectionStatus= useSelector((state) => {return state.connectionStatus})
-
   const [profilePic, setProfilePic] = useState(
     "https://imgs.search.brave.com/MOJNZZ7jZEobQ9JitvnpUAhqvxpu5zwiYbbnQxtiNQg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzlmLzRj/L2YwLzlmNGNmMGYy/NGIzNzYwNzdhMmZj/ZGFiMmU4NWMzNTg0/LmpwZw"
   );
@@ -34,7 +33,7 @@ const RequestCard = ({ user }) => {
   const acceptRequest=async ()=>{
     try {
       const res = await axios.post(BASE_URL + `/request/review/accepted/${connectionStatus._id}`, {}, { withCredentials: true });
-      console.log(req);
+      console.log(res);
     } catch (error) {
       console.log(error)
     }
