@@ -26,11 +26,9 @@ const Requests = () => {
     <div>
       {request &&<div>
         {request.map((user, idx) => {
-          
           return <RequestCard user={user} key={idx} />;
         })}
       </div>}
-      ;
     </div>
   );
 };
