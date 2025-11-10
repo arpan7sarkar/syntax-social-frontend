@@ -1,81 +1,50 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BASE_URL } from "../utils/constant";
-import { useSelector } from "react-redux";
 
 const RequestCard = ({ user }) => {
-  // console.log(user);
-  const connectionStatus= useSelector((state) => {return state.connectionStatus})
-  const [profilePic, setProfilePic] = useState(
-    "https://imgs.search.brave.com/MOJNZZ7jZEobQ9JitvnpUAhqvxpu5zwiYbbnQxtiNQg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzlmLzRj/L2YwLzlmNGNmMGYy/NGIzNzYwNzdhMmZj/ZGFiMmU4NWMzNTg0/LmpwZw"
-  );
-  const [fname, setFname] = useState("Jhon");
-  const [lname, setLname] = useState("Doe");
-  const [currentAge, setCurrentAge] = useState("18");
-  const [userabout, setUserabout] = useState(
-    " Hey there I am using Syntax social"
-  );
-  const { fName, lName, age, about, photoUrl } = user;
-  const getUserDetails = () => {
+  if (!user) return null;
+  const { fname, lname, age, about, photoUrl } = user;
+  const useSelector=(state)=>state.connectionStatus
+  const acceptRequest = async (id) => {
     try {
-      setFname(fName);
-      setLname(lName);
-      setCurrentAge(age);
-      setUserabout(about);
-      if (photoUrl) {
-        setProfilePic(photoUrl);
-      }
+      const res = await axios.post(`${BASE_URL}/request/review/accepted/${id}`, {}, { withCredentials: true });
+      console.log("accepted:", res.data);
     } catch (error) {
-      console.log(error);
+      console.error("Accept request error:", error.response?.data ?? error.message);
     }
   };
 
-  const acceptRequest=async ()=>{
+  const rejectRequest = async (id) => {
     try {
-      const res = await axios.post(BASE_URL + `/request/review/accepted/${connectionStatus._id}`, {}, { withCredentials: true });
-      console.log(res);
+      const res = await axios.post(`${BASE_URL}/request/review/rejected/${id}`, {}, { withCredentials: true });
+      console.log("rejected:", res.data);
     } catch (error) {
-      console.log(error)
+      console.error("Reject request error:", error.response?.data ?? error.message);
     }
-  }
-  const rejectRequest=async ()=>{
-    try {
-      const req= await axios.post(BASE_URL+`/request/review/rejected/${connectionStatus._id}`,)
-      console.log(req);
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  };
 
-  useEffect(() => {
-    getUserDetails();
-  }, [user]);
   return (
-    <div className="flex justify-center items-center  border-1">
-      {connectionStatus && <div className="card mt-5 w-96 shadow-sm bg-base-300">
+    <div className="flex justify-center items-center border-1">
+      <div className="card mt-5 w-96 shadow-sm bg-base-300" key={_id}>
         <figure className="px-10 pt-10">
-          <img
-            src={profilePic}
-            alt="photo"
-            className="rounded-xl border-1 h-70 w-55"
-          />
+          <img src={photoUrl} alt="photo" className="rounded-xl border-1 h-70 w-55" />
         </figure>
         <div className="card-body items-center text-center">
-          <h2 className="card-title text-3xl">
-            {fname} {lname}
-          </h2>
+          <h2 className="card-title text-3xl">{fname} {lname}</h2>
           <div>
-            <p>Age: {currentAge}</p>
-            <p>{userabout}</p>
+            <p>Age: {age}</p>
+            <p>{about}</p>
           </div>
           <div className="card-actions p-2 flex gap-10">
-            <button className="btn btn-primary" onClick={acceptRequest}>Accept</button>
-            <button className="btn btn-warning">Reject</button>
+            <button className="btn btn-primary" onClick={() => acceptRequest(_id)}>Accept</button>
+            <button className="btn btn-warning" onClick={() => rejectRequest(_id)}>Reject</button>
           </div>
         </div>
-      </div>}
+      </div>
     </div>
   );
 };
 
 export default RequestCard;
+

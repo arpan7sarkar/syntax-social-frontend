@@ -13,8 +13,10 @@ const Requests = () => {
       const res = await axios.get(BASE_URL + "/user/request/recived", {
         withCredentials: true,
       });
-      console.log(res.data.data);
-      dispatch(addRequest(res.data.data));
+      // support both shapes: { data: [...] } or direct array
+      const data = res.data?.data ?? res.data;
+      console.log(data);
+      dispatch(addRequest(data));
     } catch (error) {
       console.log(error);
     }
@@ -25,9 +27,9 @@ const Requests = () => {
   return (
     <div>
       {request &&<div>
-        {request.map((user, idx) => {
-          return <RequestCard user={user} key={idx} />;
-        })}
+          {request.map((user, idx) => {
+            return <RequestCard user={user} key={user._id ?? idx} />;
+          })}
       </div>}
     </div>
   );
