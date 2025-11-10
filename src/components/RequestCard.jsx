@@ -4,7 +4,8 @@ import { BASE_URL } from "../utils/constant";
 
 const RequestCard = ({ user }) => {
   if (!user) return null;
-  const { fname, lname, age, about, photoUrl } = user;
+  const { _id } = user;
+  const { fname, lname, age, about, photoUrl } = user.fromUserId;
   const useSelector=(state)=>state.connectionStatus
   const acceptRequest = async (id) => {
     try {
