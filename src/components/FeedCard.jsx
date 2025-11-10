@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../utils/constant";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { addConnectionStatus } from "../utils/connectionStatusSlice";
 import { removeFeed } from "../utils/feedSlice";
 
 const FeedCard = ({ key, user }) => {
@@ -38,7 +37,6 @@ const FeedCard = ({ key, user }) => {
         BASE_URL + `/request/send/interested/${user._id}`
       );
       console.log(req);
-      dispatch(addConnectionStatus(req.data.data));
       dispatch(removeFeed(user._id))
     } catch (error) {
       console.log(error);
@@ -50,7 +48,6 @@ const FeedCard = ({ key, user }) => {
         BASE_URL + `/request/send/ignored/${user._id}`
       );
       console.log(req);
-      dispatch(addConnectionStatus(req.data.data));
     } catch (error) {
       console.log(error);
     }

@@ -6,7 +6,6 @@ const RequestCard = ({ user }) => {
   if (!user) return null;
   const { _id } = user;
   const { fname, lname, age, about, photoUrl } = user.fromUserId;
-  const useSelector=(state)=>state.connectionStatus
   const acceptRequest = async (id) => {
     try {
       const res = await axios.post(`${BASE_URL}/request/review/accepted/${id}`, {}, { withCredentials: true });
