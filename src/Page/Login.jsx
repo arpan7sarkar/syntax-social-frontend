@@ -2,7 +2,7 @@ import { use, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { BASE_URL } from "../utils/constant";
 const Login = () => {
   const [emailId, setEmail] = useState("arpan@gmaill.com");
@@ -24,7 +24,7 @@ const Login = () => {
       navigate("/"); //after logining it should navigate to home
     } catch (error) {
       console.log(error?.response?.data);
-      setLoginError(error?.response?.data)
+      setLoginError(error?.response?.data);
     }
   };
   return (
@@ -95,6 +95,11 @@ const Login = () => {
                 title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
               />
             </label>
+          </div>
+          <div className="p-2 ">
+            <Link className="text-base" to="/signup">
+              Create a accont
+            </Link>
           </div>
           <p className="text-red-500">{loginError}</p>
           <div className="card-actions justify-center p-4">
