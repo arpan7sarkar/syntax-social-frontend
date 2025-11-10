@@ -12,6 +12,6 @@ const appStore = configureStore({
     
   },
 });
-//here singluer reducer
+
 export default appStore;
 

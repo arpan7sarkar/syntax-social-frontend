@@ -25,14 +25,19 @@ const Connections = () => {
   useEffect(() => {
     getConnections();
   }, []);
+
+  if (!connections) return;
+
+  if (connections.length === 0) return <h1> No Connections Found</h1>;
+  
   return (
     <div>
-     { connections && (
-      <div className="flex flex-wrap justify-center overflow-hidden">
-        {connections.map((user, idx) => {
-          return <ConnctionsCard key={idx} user={user} />;
-        })}
-      </div>
+      {connections && (
+        <div className="flex flex-wrap justify-center overflow-hidden">
+          {connections.map((user, idx) => {
+            return <ConnctionsCard key={idx} user={user} />;
+          })}
+        </div>
       )}
     </div>
   );
