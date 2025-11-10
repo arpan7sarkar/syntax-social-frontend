@@ -38,7 +38,7 @@ const NavBar = () => {
           <div className="flex gap-2">
             <div className="text-xl font-semibold flex items-center">
               {/* name of the user */}
-              <div>Welcome , {user.fName}</div>
+              <div>Hello {user.fName}</div>
             </div>
             <div className="dropdown dropdown-end mx-5">
               <div
