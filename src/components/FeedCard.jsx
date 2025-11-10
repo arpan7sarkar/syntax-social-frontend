@@ -48,6 +48,7 @@ const FeedCard = ({ key, user }) => {
         BASE_URL + `/request/send/ignored/${user._id}`
       );
       console.log(req);
+      dispatch(removeFeed(user._id))
     } catch (error) {
       console.log(error);
     }
