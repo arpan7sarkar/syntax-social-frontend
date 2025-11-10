@@ -1,28 +1,23 @@
 import axios from "axios";
-import React from "react";
 import { BASE_URL } from "../utils/constant";
+import { useDispatch } from "react-redux";
+import { removeRequest } from "../utils/requestSlice";
 
 const RequestCard = ({ user }) => {
+  const dispatch=useDispatch();
   if (!user) return null;
   const { _id } = user;
   const { fname, lname, age, about, photoUrl } = user.fromUserId;
-  const acceptRequest = async (id) => {
+  const requestHandler = async (status,id) => {
     try {
-      const res = await axios.post(`${BASE_URL}/request/review/accepted/${id}`, {}, { withCredentials: true });
+      const res = await axios.post(`${BASE_URL}/request/review/${status}/${id}`, {}, { withCredentials: true });
       console.log("accepted:", res.data);
+      dispatch(removeRequest(id))
     } catch (error) {
       console.error("Accept request error:", error.response?.data ?? error.message);
     }
   };
 
-  const rejectRequest = async (id) => {
-    try {
-      const res = await axios.post(`${BASE_URL}/request/review/rejected/${id}`, {}, { withCredentials: true });
-      console.log("rejected:", res.data);
-    } catch (error) {
-      console.error("Reject request error:", error.response?.data ?? error.message);
-    }
-  };
 
   return (
     <div className="flex justify-center items-center border-1">
@@ -37,8 +32,8 @@ const RequestCard = ({ user }) => {
             <p>{about}</p>
           </div>
           <div className="card-actions p-2 flex gap-10">
-            <button className="btn btn-primary" onClick={() => acceptRequest(_id)}>Accept</button>
-            <button className="btn btn-warning" onClick={() => rejectRequest(_id)}>Reject</button>
+            <button className="btn btn-primary" onClick={() => requestHandler("accepted",_id)}>Accept</button>
+            <button className="btn btn-warning" onClick={() =>  requestHandler("rejected",_id)}>Reject</button>
           </div>
         </div>
       </div>
