@@ -23,14 +23,25 @@ const Feed = () => {
     getFeed();
   }, []);
   return (
-    feed && (
-      <div className="flex flex-wrap justify-center overflow-hidden">
-        {feed.map((user,idx) => {
-          return <FeedCard key={user._id ?? idx} user={user} />;
-        })
-      }
-      </div>
-    )
+    <div className="flex flex-col">
+      {feed && (
+        <div>
+          <div className="flex flex-wrap justify-center overflow-hidden">
+            {feed.map((user, idx) => {
+              return <FeedCard key={user._id ?? idx} user={user} />;
+            })}
+          </div>
+          <div className="mb-15 flex items-center justify-center gap-10 mt-5">
+            <button className="btn p-9 rounded-2xl bg-accent text-black text-lg active:scale-95">
+              Previous Page
+            </button>
+            <button className="btn p-9 rounded-2xl bg-accent text-black text-lg active:scale-95">
+              Next Page
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
