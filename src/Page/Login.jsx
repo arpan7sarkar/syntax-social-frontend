@@ -29,7 +29,7 @@ const Login = () => {
   };
   return (
     <div className="flex justify-center items-center mt-35 ">
-      <div className="card bg-base-200 rounded-2xl overflow-hidden w-96 shadow-sm  ">
+      <div className="card bg-base-200 rounded-2xl overflow-hidden w-100 shadow-sm  ">
         <div className="card-body ">
           <h2 className="card-title ml-28 text-3xl p-2 font-semibold">Login</h2>
           <div className="flex flex-col justify-center items-center gap-2">
@@ -96,9 +96,12 @@ const Login = () => {
               />
             </label>
           </div>
-          <div className="p-2 ">
+          <div className="p-2 justify-between flex">
             <Link className="text-base" to="/signup">
               Create a accont
+            </Link>
+            <Link className="text-base" to="/forgot">
+              forgot password
             </Link>
           </div>
           <p className="text-red-500">{loginError}</p>

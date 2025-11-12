@@ -8,6 +8,7 @@ import Feed from "./Page/Feed.jsx";
 import Connections from "./Page/Connections.jsx";
 import Requests from "./Page/Requests.jsx";
 import SignUp from "./Page/SignUp.jsx";
+import ForgotPassword from "./Page/ForgotPassword.jsx";
 function App() {
   return (
       <Provider store={appStore}>
@@ -17,6 +18,7 @@ function App() {
               <Route path="/" element={<Feed />}></Route>
               <Route path="/login" element={<Login />}></Route>
               <Route path="/signup" element={<SignUp />}></Route>
+              <Route path="/forgot" element={<ForgotPassword />}></Route>
               <Route path="/profile" element={<Profile />}></Route>
               <Route path="/connections" element={<Connections />}></Route>
               <Route path="/requests" element={<Requests />}></Route>
