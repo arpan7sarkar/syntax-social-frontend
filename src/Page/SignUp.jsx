@@ -5,11 +5,11 @@ import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router";
 import { BASE_URL } from "../utils/constant";
 const SignUp = () => {
-  const [emailId, setEmail] = useState("ghapla@gmaill.com");
-  const [password, setPassword] = useState("Ghapla@123");
-  const [confirmPassword, setConfirmPassword] = useState("Arpan@123");
-  const [fName, setFName] = useState("Arpan");
-  const [lName, setLName] = useState("Kumar");
+  const [emailId, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
   const [age, setAge] = useState("18");
   const [about, setAbout] = useState("I am a student");
   const [photoUrl, setPhotoUrl] = useState("");
