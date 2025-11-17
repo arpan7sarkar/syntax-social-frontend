@@ -1,7 +1,7 @@
 import Login from "./Page/Login.jsx";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Body from "./components/Body.jsx";
-import Profile from "./page/Profile.jsx";
+import Profile from "./Page/Profile.jsx";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Feed from "./Page/Feed.jsx";
