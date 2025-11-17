@@ -6,7 +6,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 createRoot(document.getElementById("root")).render(
   //strict mode in developer mode makes 2 api calls in production makes 1 api call
-  // <StrictMode>
-  <App />
-  // </StrictMode>,
+  <StrictMode>
+    <App />
+  </StrictMode>
 );
