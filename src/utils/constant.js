@@ -1,1 +1,1 @@
-export const BASE_URL = "https://syntax-social-backend.onrender.com";
+export const BASE_URL = "https://syntax-social-backend.onrender.com/";
