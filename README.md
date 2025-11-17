@@ -10,7 +10,7 @@
 
 **🚀 The cutting-edge frontend for Syntax Social—a modern developer platform where coders build, learn, and grow together.**
 
-[Live Demo](#) · [Backend Repo](https://github.com/arpan7sarkar/syntax-social-backend) · [Report Bug](https://github.com/arpan7sarkar/syntax-social-frontend/issues) · [Request Feature](https://github.com/arpan7sarkar/syntax-social-frontend/issues)
+[Live Demo](https://syntax-social.onrender.com/) · [Backend Repo](https://github.com/arpan7sarkar/syntax-social) · [Report Bug](https://github.com/arpan7sarkar/syntax-social-frontend/issues) · [Request Feature](https://github.com/arpan7sarkar/syntax-social-frontend/issues)
 
 </div>
 
