@@ -1,5 +1,7 @@
 import React from "react";
 import LandingNavBar from "../components/LandingNavBar";
+import Hero from "../components/Hero";
+
 
 const LandingPage = () => {
   return (
@@ -10,6 +12,7 @@ const LandingPage = () => {
       </div>
 
       <LandingNavBar />
+      <Hero />
     </div>
   );
 };
