@@ -24,7 +24,7 @@ const Hero = () => {
         Start for free
       </Link>
       <Link
-        to="/login"
+        to="/landing"
         className="px-8 py-3 text-sm font-semibold bg-[#111] text-white border border-white/10 rounded-xl hover:bg-[#222] transition-all min-w-[160px]"
       >
         Get Demo
