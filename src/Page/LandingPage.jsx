@@ -2,6 +2,7 @@ import React from "react";
 import LandingNavBar from "../components/LandingNavBar";
 import Hero from "../components/Hero";
 import Featured from "../components/Featured";
+import Footer from "../components/Footer";
 
 
 const LandingPage = () => {
@@ -15,6 +16,8 @@ const LandingPage = () => {
       <LandingNavBar />
       <Hero />
       <Featured/>
+
+      <Footer/>
     </div>
   );
 };
