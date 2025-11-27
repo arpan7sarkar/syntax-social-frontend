@@ -34,14 +34,17 @@ const Hero = () => {
   const DashBoard = () => (
     <div className="relative max-w-5xl mx-auto">
       {/* Glow behind dashboard */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-white/[0.05] blur-[80px] -z-10 rounded-full"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-white/[0.05] blur-[80px] -z-10 rounded-full">
+      </div>
 
       <div className="bg-[#0A0A0A] border border-white/10 rounded-3xl p-2 shadow-2xl overflow-hidden">
         <div className="bg-[#111] rounded-2xl border border-white/5 overflow-hidden">
           {/* Dashboard Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-white/5">
             <div className="flex items-center gap-2 text-gray-400">
-              <div className="w-4 h-4 border border-white/20 rounded rotate-45"></div>
+              <div className="w-4 h-4 border border-white/20 rounded rotate-45 bg-white">
+              <img src="https://imgs.search.brave.com/cZeya5FVG8Ts7RD_KZCZJu36wcTJWSxFU53F-dQB8Ms/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbnNjb3V0LmNv/bS9pY29uL3ByZW1p/dW0vcG5nLTI1Ni10/aHVtYi9jb25uZWN0/LWljb24tc3ZnLWRv/d25sb2FkLXBuZy0y/Nzc5MDk5LnBuZz9m/PXdlYnAmdz0xMjg" alt="" />
+              </div>
               <span className="text-sm font-medium text-white">
                 Syntax Social
               </span>

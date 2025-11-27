@@ -61,7 +61,7 @@ const MatchSection = () => {
                   <button className="w-14 h-14 rounded-full bg-[#1A1A1A] text-gray-400 text-xl flex items-center justify-center hover:bg-[#222] hover:text-white transition-all border border-white/5 group">
                     <i className="ri-close-line group-hover:scale-110 transition-transform"></i>
                   </button>
-                  <button className="w-16 h-16 rounded-full bg-gradient-to-tr from-accent-400 to-gray-600 text-white text-2xl flex items-center justify-center shadow-lg shadow-blue-100/30 hover:scale-105 transition-all">
+                  <button className="w-16 h-16 rounded-full bg-gradient-to-tr from-accent-400 to-gray-600 text-white text-2xl flex items-center justify-center shadow-lg  hover:scale-105 transition-all">
                     <i className="ri-heart-fill"></i>
                   </button>
                 </div>
