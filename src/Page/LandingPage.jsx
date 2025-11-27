@@ -3,7 +3,7 @@ import LandingNavBar from "../components/LandingNavBar";
 import Hero from "../components/Hero";
 import Featured from "../components/Featured";
 import Footer from "../components/Footer";
-
+import MatchSection from "../components/MatchSection";
 
 const LandingPage = () => {
   return (
@@ -15,9 +15,9 @@ const LandingPage = () => {
 
       <LandingNavBar />
       <Hero />
-      <Featured/>
-
-      <Footer/>
+      <Featured />
+      <MatchSection />
+      <Footer />
     </div>
   );
 };
