@@ -21,7 +21,7 @@ const Login = () => {
         { withCredentials: true }
       );
       dispatch(addUser(res.data)); //this willl save the user data into redux toolkit
-      navigate("/"); //after logining it should navigate to home
+      navigate("/feed"); //after logining it should navigate to home
     } catch (error) {
       console.log(error?.response?.data);
       setLoginError(error?.response?.data);
