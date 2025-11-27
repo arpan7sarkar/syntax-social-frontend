@@ -15,13 +15,31 @@ const Footer = () => {
             © {new Date().getFullYear()} Syntax Social. All rights reserved.
           </p>
           <div className="flex gap-4">
-            <a href="https://x.com/arpan7sarkar"  target="_blank" className="hover:text-white transition-colors">
+            <a
+              href="https://x.com/arpan7sarkar"
+              rel="noopener noreferrer"
+              aria-label="Visit Arpan Sarkar on LinkedIn"
+              target="_blank"
+              className="hover:text-white transition-colors"
+            >
               <i className="ri-twitter-x-line"></i>
             </a>
-            <a href="https://www.linkedin.com/in/arpan7sarkar/" target="_blank" className="hover:text-white transition-colors">
+            <a
+              href="https://www.linkedin.com/in/arpan7sarkar/"
+              rel="noopener noreferrer"
+              aria-label="Visit Arpan Sarkar on LinkedIn"
+              target="_blank"
+              className="hover:text-white transition-colors"
+            >
               <i className="ri-linkedin-line"></i>
             </a>
-            <a href="https://github.com/arpan7sarkar" target="_blank" className="hover:text-white transition-colors">
+            <a
+              href="https://github.com/arpan7sarkar"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit Arpan Sarkar on LinkedIn"
+              className="hover:text-white transition-colors"
+            >
               <i className="ri-github-line"></i>
             </a>
           </div>
