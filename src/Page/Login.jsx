@@ -28,15 +28,22 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex justify-center items-center mt-35 ">
-      <div className="card bg-base-200 rounded-2xl overflow-hidden w-100 shadow-sm  ">
-        <div className="card-body ">
-          <h2 className="card-title ml-28 text-3xl p-2 font-semibold">Login</h2>
-          <div className="flex flex-col justify-center items-center gap-2">
+    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-white/20 selection:text-white overflow-x-hidden relative flex justify-center items-center">
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[80%] h-[60%] bg-white/[0.03] blur-[120px] rounded-full"></div>
+        <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[120%] h-[800px] border-t border-white/10 rounded-[100%] bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
+      </div>
+
+      <div className="card bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl overflow-hidden w-96 shadow-2xl relative z-10">
+        <div className="card-body p-8">
+          <h2 className="text-3xl font-semibold text-center mb-6 text-white">
+            Login
+          </h2>
+          <div className="flex flex-col gap-4">
             {/* emailId */}
-            <label className="input validator">
+            <label className="input input-bordered flex items-center gap-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus-within:border-white/30 focus-within:outline-none">
               <svg
-                className="h-[1em] opacity-50"
+                className="h-[1em] opacity-70"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
@@ -52,8 +59,9 @@ const Login = () => {
                 </g>
               </svg>
               <input
-                type="emailId"
-                placeholder="Enter your emailId "
+                type="email"
+                className="grow placeholder:text-white/40"
+                placeholder="Enter your email"
                 required
                 value={emailId}
                 onChange={(e) => {
@@ -62,9 +70,9 @@ const Login = () => {
               />
             </label>
             {/* password */}
-            <label className="input validator">
+            <label className="input input-bordered flex items-center gap-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus-within:border-white/30 focus-within:outline-none">
               <svg
-                className="h-[1em] opacity-50"
+                className="h-[1em] opacity-70"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
@@ -86,28 +94,41 @@ const Login = () => {
               </svg>
               <input
                 type="password"
+                className="grow placeholder:text-white/40"
                 required
                 placeholder="Password"
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
               />
             </label>
           </div>
-          <div className="p-2 justify-between flex">
-            <Link className="text-base" to="/signup">
-              Create a accont
+
+          <div className="flex justify-between items-center mt-4 text-sm">
+            <Link
+              className="text-white/60 hover:text-white transition-colors"
+              to="/signup"
+            >
+              Create an account
             </Link>
-            <Link className="text-base" to="/forgot">
-              forgot password
+            <Link
+              className="text-white/60 hover:text-white transition-colors"
+              to="/forgot"
+            >
+              Forgot password?
             </Link>
           </div>
-          <p className="text-red-500">{loginError}</p>
-          <div className="card-actions justify-center p-4">
+
+          {loginError && (
+            <p className="text-red-400 text-sm mt-2 text-center">
+              {loginError}
+            </p>
+          )}
+
+          <div className="card-actions justify-center mt-6">
             <button
-              className="btn btn-primary active:scale-95"
+              className="btn w-full bg-white text-black hover:bg-gray-200 border-none font-medium text-lg h-12 min-h-0 rounded-xl"
               onClick={loginHadnler}
             >
               Login
