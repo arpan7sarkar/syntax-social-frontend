@@ -71,7 +71,7 @@ const SignUp = () => {
                 </p>
 
                 <div className="flex flex-col gap-4">
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4 ">
                     {/* fName */}
                     <label className="input input-bordered flex items-center gap-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus-within:border-white/30 focus-within:outline-none w-full">
                       <svg
@@ -141,147 +141,166 @@ const SignUp = () => {
                       />
                     </label>
                   </div>
-
-                  {/* emailId */}
-                  <label className="input input-bordered flex items-center gap-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus-within:border-white/30 focus-within:outline-none">
-                    <svg
-                      className="h-[1em] opacity-70"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                    >
-                      <g
-                        strokeLinejoin="round"
-                        strokeLinecap="round"
-                        strokeWidth="2.5"
-                        fill="none"
-                        stroke="currentColor"
+                  <div className="flex flex-col gap-4 ml-15">
+                    {/* emailId */}
+                    <label className="input input-bordered flex items-center gap-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus-within:border-white/30 focus-within:outline-none">
+                      <svg
+                        className="h-[1em] opacity-70"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
                       >
-                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                      </g>
-                    </svg>
-                    <input
-                      type="email"
-                      className="grow placeholder:text-white/40"
-                      placeholder="Enter your email"
-                      required
-                      value={emailId}
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                      }}
-                    />
-                  </label>
+                        <g
+                          strokeLinejoin="round"
+                          strokeLinecap="round"
+                          strokeWidth="2.5"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <rect
+                            width="20"
+                            height="16"
+                            x="2"
+                            y="4"
+                            rx="2"
+                          ></rect>
+                          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        </g>
+                      </svg>
+                      <input
+                        type="email"
+                        className="grow placeholder:text-white/40"
+                        placeholder="Enter your email"
+                        required
+                        value={emailId}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
+                      />
+                    </label>
 
-                  {/* password */}
-                  <label className="input input-bordered flex items-center gap-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus-within:border-white/30 focus-within:outline-none">
-                    <svg
-                      className="h-[1em] opacity-70"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                    >
-                      <g
-                        strokeLinejoin="round"
-                        strokeLinecap="round"
-                        strokeWidth="2.5"
-                        fill="none"
-                        stroke="currentColor"
+                    {/* password */}
+                    <label className="input input-bordered flex items-center gap-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus-within:border-white/30 focus-within:outline-none">
+                      <svg
+                        className="h-[1em] opacity-70"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
                       >
-                        <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path>
-                        <circle
-                          cx="16.5"
-                          cy="7.5"
-                          r=".5"
-                          fill="currentColor"
-                        ></circle>
-                      </g>
-                    </svg>
-                    <input
-                      type="password"
-                      className="grow placeholder:text-white/40"
-                      required
-                      placeholder="Password"
-                      value={password}
-                      onChange={(e) => {
-                        setPassword(e.target.value);
-                      }}
-                      title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
-                    />
-                  </label>
+                        <g
+                          strokeLinejoin="round"
+                          strokeLinecap="round"
+                          strokeWidth="2.5"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path>
+                          <circle
+                            cx="16.5"
+                            cy="7.5"
+                            r=".5"
+                            fill="currentColor"
+                          ></circle>
+                        </g>
+                      </svg>
+                      <input
+                        type="password"
+                        className="grow placeholder:text-white/40"
+                        required
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => {
+                          setPassword(e.target.value);
+                        }}
+                        title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+                      />
+                    </label>
 
-                  {/* age */}
-                  <label className="input input-bordered flex items-center gap-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus-within:border-white/30 focus-within:outline-none">
-                    <svg
-                      className="h-[1em] opacity-70"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                    >
-                      <g
-                        strokeLinejoin="round"
-                        strokeLinecap="round"
-                        strokeWidth="2.5"
-                        fill="none"
-                        stroke="currentColor"
+                    {/* age */}
+                    <label className="input input-bordered flex items-center gap-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus-within:border-white/30 focus-within:outline-none">
+                      <svg
+                        className="h-[1em] opacity-70"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
                       >
-                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                        <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path>
-                        <circle
-                          cx="16.5"
-                          cy="7.5"
-                          r=".5"
-                          fill="currentColor"
-                        ></circle>
-                      </g>
-                    </svg>
-                    <input
-                      type="number"
-                      className="grow placeholder:text-white/40"
-                      placeholder="Age"
-                      required
-                      value={age}
-                      onChange={(e) => {
-                        setAge(e.target.value);
-                      }}
-                    />
-                  </label>
+                        <g
+                          strokeLinejoin="round"
+                          strokeLinecap="round"
+                          strokeWidth="2.5"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <rect
+                            width="20"
+                            height="16"
+                            x="2"
+                            y="4"
+                            rx="2"
+                          ></rect>
+                          <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path>
+                          <circle
+                            cx="16.5"
+                            cy="7.5"
+                            r=".5"
+                            fill="currentColor"
+                          ></circle>
+                        </g>
+                      </svg>
+                      <input
+                        type="number"
+                        className="grow placeholder:text-white/40"
+                        placeholder="Age"
+                        required
+                        value={age}
+                        onChange={(e) => {
+                          setAge(e.target.value);
+                        }}
+                      />
+                    </label>
 
-                  {/* skills */}
-                  <label className="input input-bordered flex items-center gap-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus-within:border-white/30 focus-within:outline-none">
-                    <svg
-                      className="h-[1em] opacity-70"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                    >
-                      <g
-                        strokeLinejoin="round"
-                        strokeLinecap="round"
-                        strokeWidth="2.5"
-                        fill="none"
-                        stroke="currentColor"
+                    {/* skills */}
+                    <label className="input input-bordered flex items-center gap-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus-within:border-white/30 focus-within:outline-none">
+                      <svg
+                        className="h-[1em] opacity-70"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
                       >
-                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                        <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path>
-                        <circle
-                          cx="16.5"
-                          cy="7.5"
-                          r=".5"
-                          fill="currentColor"
-                        ></circle>
-                      </g>
-                    </svg>
-                    <input
-                      type="text"
-                      className="grow placeholder:text-white/40"
-                      placeholder="Skills (comma separated)"
-                      required
-                      value={skills}
-                      onChange={(e) => {
-                        const skillsArr = e.target.value
-                          .split(",")
-                          .map((s) => s.trim());
-                        setSkills(skillsArr);
-                      }}
-                    />
-                  </label>
+                        <g
+                          strokeLinejoin="round"
+                          strokeLinecap="round"
+                          strokeWidth="2.5"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <rect
+                            width="20"
+                            height="16"
+                            x="2"
+                            y="4"
+                            rx="2"
+                          ></rect>
+                          <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path>
+                          <circle
+                            cx="16.5"
+                            cy="7.5"
+                            r=".5"
+                            fill="currentColor"
+                          ></circle>
+                        </g>
+                      </svg>
+                      <input
+                        type="text"
+                        className="grow placeholder:text-white/40"
+                        placeholder="Skills (comma separated)"
+                        required
+                        value={skills}
+                        onChange={(e) => {
+                          const skillsArr = e.target.value
+                            .split(",")
+                            .map((s) => s.trim());
+                          setSkills(skillsArr);
+                        }}
+                      />
+                    </label>
+                  </div>
                 </div>
 
                 {loginError && (
