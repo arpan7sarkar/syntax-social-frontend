@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userData=useSelector(state=>state.user);
+  const userData = useSelector((state) => state.user);
   //this function will call profile viewing api when the website will be loaded
   const fetchUser = async () => {
     try {
@@ -22,7 +22,7 @@ const Body = () => {
       // console.log(res.data.user);
     } catch (error) {
       //only when user is unothorized(not loggedin)
-      if(error.status===401){
+      if (error.status === 401) {
         navigate("/login");
       }
       console.log(error);
@@ -32,7 +32,7 @@ const Body = () => {
     fetchUser();
   }, []);
   return (
-    <div>
+    <div className="pt-28 min-h-screen bg-[#050505]">
       <NavBar />
       <Outlet />
       <Footer />
