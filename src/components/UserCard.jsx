@@ -20,7 +20,7 @@ const UserCard = ({ user }) => {
       setLname(lName);
       setCurrentAge(age);
       setUserabout(about);
-      if(photoUrl){
+      if (photoUrl) {
         setProfilePic(photoUrl);
       }
     } catch (error) {
@@ -32,20 +32,30 @@ const UserCard = ({ user }) => {
   }, [user]);
   return (
     <div>
-      <div className="card mt-5 w-100 shadow-sm bg-base-300 mx-0">
+      <div className="card w-full shadow-xl bg-white/5 border border-white/10 backdrop-blur-md text-white">
         <figure className="px-10 pt-10">
-          <img src={profilePic} alt="photo" className="rounded-xl border-1 h-70 w-55" />
+          <img
+            src={profilePic}
+            alt="photo"
+            className="rounded-xl border border-white/10 h-70 w-55 object-cover"
+          />
         </figure>
         <div className="card-body items-center text-center">
-          <h2 className="card-title text-3xl">
+          <h2 className="card-title text-3xl font-bold">
             {fname} {lname}
           </h2>
-          <div>
-            <p>
-              Age: {currentAge +"     "}
-              {gender &&  <span>Gender: {gender}</span>}
+          <div className="text-white/70">
+            <p className="mb-2">
+              <span className="font-semibold text-white">Age:</span>{" "}
+              {currentAge}
+              {gender && (
+                <span className="ml-4">
+                  <span className="font-semibold text-white">Gender:</span>{" "}
+                  {gender}
+                </span>
+              )}
             </p>
-            <p>{userabout}</p>
+            <p className="italic">"{userabout}"</p>
           </div>
         </div>
       </div>
