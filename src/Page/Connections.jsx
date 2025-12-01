@@ -29,14 +29,21 @@ const Connections = () => {
   if (!connections) return;
 
   if (connections.length === 0) return <h1> No Connections Found</h1>;
-  
+
   return (
-    <div>
-      {connections && (
-        <div className="flex flex-wrap justify-center overflow-hidden">
+    <div className="min-h-[80vh] w-full p-8">
+      <h2 className="text-3xl font-bold text-white text-center mb-10">
+        Your Connections
+      </h2>
+      {connections && connections.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {connections.map((user, idx) => {
             return <ConnctionsCard key={idx} user={user} />;
           })}
+        </div>
+      ) : (
+        <div className="flex justify-center items-center h-[50vh]">
+          <p className="text-xl text-gray-400">No connections yet</p>
         </div>
       )}
     </div>
