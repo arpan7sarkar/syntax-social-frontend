@@ -37,7 +37,7 @@ const SignUp = () => {
         { withCredentials: true }
       );
       dispatch(addUser(res.data.user));
-      navigate("/");
+      navigate("/feed");
     } catch (error) {
       console.log(error?.response?.data);
       setLoginError(error?.response?.data);
