@@ -130,7 +130,7 @@ const Feed = () => {
           <i className="ri-close-line"></i>
         </button>
         <button
-          className="w-16 h-16 rounded-full bg-gradient-to-tr from-accent-400 to-gray-600 text-white text-3xl flex items-center justify-center hover:scale-110 transition-all shadow-lg shadow-purple-500/30"
+          className="w-16 h-16 rounded-full bg-gradient-to-tr from-accent-400 to-gray-600 text-white text-3xl flex items-center justify-center hover:scale-110 transition-all shadow-lg shadow-gray-600/30"
           onClick={() => swipeManual("right")}
           disabled={!canSwipe}
         >
