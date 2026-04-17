@@ -5,13 +5,11 @@ import axios from "axios";
 import { BASE_URL } from "../utils/constant";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { use, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userData = useSelector((state) => state.user);
   //this function will call profile viewing api when the website will be loaded
   const fetchUser = async () => {
     try {
@@ -22,7 +20,7 @@ const Body = () => {
       // console.log(res.data.user);
     } catch (error) {
       //only when user is unothorized(not loggedin)
-      if (error.status === 401) {
+      if (error?.response?.status === 401) {
         navigate("/login");
       }
       console.log(error);
