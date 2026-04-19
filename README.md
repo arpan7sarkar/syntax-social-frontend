@@ -10,7 +10,7 @@
 
 **🚀 The cutting-edge frontend for Syntax Social—a modern developer platform where coders build, learn, and grow together.**
 
-[Live Demo](https://syntax-social.onrender.com/) · [Backend Repo](https://github.com/arpan7sarkar/syntax-social) · [Report Bug](https://github.com/arpan7sarkar/syntax-social-frontend/issues) · [Request Feature](https://github.com/arpan7sarkar/syntax-social-frontend/issues)
+[Live Demo](#) · [Backend Repo](https://github.com/arpan7sarkar/syntax-social) · [Report Bug](https://github.com/arpan7sarkar/syntax-social-frontend/issues) · [Request Feature](https://github.com/arpan7sarkar/syntax-social-frontend/issues)
 
 </div>
 
@@ -111,6 +111,16 @@ yarn dev
 
 4️⃣ **Open your browser**  
 Navigate to `http://localhost:5173` to see the app in action! 🎉
+
+### Deploy on Vercel
+
+1. Create a new Vercel project and import this repo (Framework preset: Vite).
+2. Build Command: `npm run build`
+3. Output Directory: `dist`
+4. Environment Variables (Project Settings):
+   - `VITE_API_BASE_URL` = your deployed backend URL
+
+`vercel.json` is included to make React Router deep-links/refresh work (rewrites all routes to `index.html`).
 
 ### Build for Production
 
@@ -271,3 +281,5 @@ Made with ❤️ by [Arpan Sarkar](https://github.com/arpan7sarkar)
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,20&height=100&section=footer)
 
 </div>
+
+
