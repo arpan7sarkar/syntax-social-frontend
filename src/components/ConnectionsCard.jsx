@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { BASE_URL } from "../utils/constant";
+import { removeConnectionByUserId } from "../utils/connectionSlice";
 
 const ConnctionsCard = ({ user }) => {
   // console.log(user);
+  const dispatch = useDispatch();
 
   const [profilePic, setProfilePic] = useState(
     "https://imgs.search.brave.com/MOJNZZ7jZEobQ9JitvnpUAhqvxpu5zwiYbbnQxtiNQg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzlmLzRj/L2YwLzlmNGNmMGYy/NGIzNzYwNzdhMmZj/ZGFiMmU4NWMzNTg0/LmpwZw"
@@ -29,6 +34,20 @@ const ConnctionsCard = ({ user }) => {
   useEffect(() => {
     getUserDetails();
   }, [user]);
+
+  const handleRemoveConnection = async () => {
+    const ok = window.confirm("Are you sure you want to remove this connection?");
+    if (!ok) return;
+
+    try {
+      await axios.delete(`${BASE_URL}/request/remove/${user._id}`, {
+        withCredentials: true,
+      });
+      dispatch(removeConnectionByUserId(user._id));
+    } catch (error) {
+      console.log(error?.response?.data ?? error.message);
+    }
+  };
   return (
     <div className="relative w-[340px] h-[500px] bg-[#111] rounded-[32px] border border-white/10 shadow-2xl overflow-hidden flex flex-col mx-auto my-6 transition-transform hover:scale-[1.02] duration-300">
       {/* Image Section (60%) */}
@@ -63,7 +82,10 @@ const ConnctionsCard = ({ user }) => {
 
         {/* Actions */}
         <div className="mt-auto flex justify-center">
-          <button className="px-6 py-3 rounded-full bg-[#1A1A1A] text-red-500 font-semibold flex items-center gap-2 hover:bg-[#222] hover:text-red-400 transition-all border border-white/10 group shadow-lg">
+          <button
+            className="px-6 py-3 rounded-full bg-[#1A1A1A] text-red-500 font-semibold flex items-center gap-2 hover:bg-[#222] hover:text-red-400 transition-all border border-white/10 group shadow-lg"
+            onClick={handleRemoveConnection}
+          >
             <i className="ri-user-unfollow-line text-xl group-hover:scale-110 transition-transform"></i>
             Remove Connection
           </button>
