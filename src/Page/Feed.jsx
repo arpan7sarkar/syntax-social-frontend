@@ -1,21 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constant";
 import { addFeed, removeFeed } from "../utils/feedSlice";
-import React, { useEffect, useState, useMemo, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import TinderCard from "react-tinder-card";
 import TinderCardItem from "../components/TinderCardItem";
+import SwipeDeck from "../components/SwipeDeck";
 
 const Feed = () => {
   const feed = useSelector((state) => state.feed);
   const dispatch = useDispatch();
   const [lastDirection, setLastDirection] = useState();
-  // We keep track of the current index to know which card is on top
-  // However, react-tinder-card removes DOM elements when swiped out if we don't manage it.
-  // A common pattern is to just render the list.
-
-  // Refs for the cards to trigger swipe programmatically
-  const childRefs = useRef([]);
+  const deckRef = useRef(null);
 
   const getFeed = async () => {
     try {
@@ -34,15 +29,7 @@ const Feed = () => {
     getFeed();
   }, []);
 
-  // Update refs array when feed changes
-  const feedLength = feed ? feed.length : 0;
-  useMemo(() => {
-    childRefs.current = Array(feedLength)
-      .fill(0)
-      .map((i) => React.createRef());
-  }, [feedLength]);
-
-  const swiped = async (direction, user, index) => {
+  const swiped = async (direction, user) => {
     setLastDirection(direction);
     // API Call based on direction
     try {
@@ -62,32 +49,14 @@ const Feed = () => {
     }
   };
 
-  const outOfFrame = (name) => {
-    console.log(name + " left the screen!");
+  const canSwipe = feed && feed.length > 0;
+
+  const swipeManual = (dir) => {
+    deckRef.current?.swipe(dir);
   };
 
-  // We need a way to track the current top card for buttons.
-  // Standard react-tinder-card example uses a state index.
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (feed) setCurrentIndex(feed.length - 1);
-  }, [feed]);
-
-  const canSwipe = currentIndex >= 0;
-
-  const swipeManual = async (dir) => {
-    if (canSwipe && childRefs.current[currentIndex]) {
-      await childRefs.current[currentIndex].current.swipe(dir); // Swipe the card!
-    }
-  };
-
-  // Callback when card is swiped (by user or button)
-  const onCardLeftScreen = (myIdentifier) => {
-    console.log(myIdentifier + " left the screen");
-    // Remove the card from the store to update the UI
-    dispatch(removeFeed(myIdentifier));
-    // setCurrentIndex is handled by the useEffect on feed change
+  const onCardLeftScreen = (userId) => {
+    dispatch(removeFeed(userId));
   };
 
   if (!feed)
@@ -106,18 +75,13 @@ const Feed = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] w-full overflow-hidden relative">
       <div className="relative w-[340px] h-[500px]">
-        {feed.map((user, index) => (
-          <TinderCard
-            ref={childRefs.current[index]}
-            className="absolute top-0 left-0"
-            key={user._id}
-            onSwipe={(dir) => swiped(dir, user, index)}
-            onCardLeftScreen={() => onCardLeftScreen(user._id)}
-            preventSwipe={["up", "down"]}
-          >
-            <TinderCardItem user={user} />
-          </TinderCard>
-        ))}
+        <SwipeDeck
+          ref={deckRef}
+          items={feed}
+          renderCard={(user) => <TinderCardItem user={user} />}
+          onSwipe={swiped}
+          onCardLeftScreen={onCardLeftScreen}
+        />
       </div>
 
       {/* Buttons */}
